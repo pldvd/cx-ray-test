@@ -14,6 +14,15 @@ const BlogPostSchema = new Schema({
     type: Number,
     default: 0
   }
+}, {
+  toJSON: {
+    virtuals: true
+  }
+});
+
+BlogPostSchema.virtual('createdAt').get(function() {
+  //MongoDB ObjectIds contain information about the creation of the document
+  return this._id.getTimestamp();
 });
 
 module.exports = mongoose.model('blog-post', BlogPostSchema);
