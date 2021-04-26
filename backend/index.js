@@ -3,7 +3,6 @@ require('dotenv').config();
 const app = require('./app');
 const PORT = process.env.PORT || 4200;
 const mongoose = require('mongoose');
-console.log(process.env.MONGODB_URI);
 
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
