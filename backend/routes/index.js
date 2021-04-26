@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { addPost } = require('../controllers');
-const { catchAsyncErrors } = require('../middleware/ErrorHandlers');
+const { catchAsyncErrors } = require('../middleware/errorHandlers');
 
 router.get('/', (req, res) => {
   res.send('Hello world!');
