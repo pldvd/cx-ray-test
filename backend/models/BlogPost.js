@@ -20,8 +20,10 @@ const BlogPostSchema = new Schema({
   }
 });
 
-BlogPostSchema.virtual('createdAt').get(function() {
-  //MongoDB ObjectIds contain information about the creation of the document
+BlogPostSchema.virtual('createdAt').get(function () {
+  /*
+  MongoDB ObjectIds contain information about the creation of the document
+  */
   return this._id.getTimestamp();
 });
 
