@@ -1,5 +1,5 @@
 /*
-This will catch any errors that are thrown by an async function, so we can avoid writing try catch in every async function like database queries.
+This will catch any errors that are thrown by an async function, so we can avoid writing try/catch in every async function ( handle db query errors ).
 */
 
 function catchAsyncErrors(fn) {
@@ -27,7 +27,7 @@ This will handle mongoose validation errors - they can be identified by having a
 function validation(err, req, res, next) {
   if (!err.errors) return next(err);
 
-  return res.status(400).json(err.errors);
+  res.status(400).json(err.errors);
 }
 
 
