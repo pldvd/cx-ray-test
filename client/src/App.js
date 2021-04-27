@@ -2,24 +2,27 @@ import './App.css';
 import Container from '@material-ui/core/Container'
 import AppHeader from './components/AppHeader';
 import BlogPosts from './components/BlogPosts';
-import ThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import responsiveFontSizes from '@material-ui/core/styles/responsiveFontSizes';
 import Loader from './components/Loader';
+import { useSelector } from 'react-redux';
 
 let theme = createMuiTheme();
 theme = responsiveFontSizes(theme);
 
 function App() {
+  const isLoading = useSelector(store => store.isLoading);
+
   return (
     <div className="App">
-      <ThemeProvider theme={theme}>
+      <MuiThemeProvider theme={theme}>
+        {isLoading ? <Loader /> : null}
         <Container maxWidth="md">
-          <Loader />
           <AppHeader text="Awesome Blog App" />
           <BlogPosts />
         </Container>
-      </ThemeProvider>
+      </MuiThemeProvider>
     </div>
   );
 }
