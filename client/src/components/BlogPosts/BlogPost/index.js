@@ -12,21 +12,21 @@ function BlogPost({ title, text }) {
   return (
     <Card>
       <CardContent>
-        <Typography>{title}</Typography>
-        <Typography>{text}</Typography>
+        <Typography variant="h6">{title}</Typography>
+        <Typography variant="body1">{text}</Typography>
       </CardContent>
       <CardActions>
-        <Button
-          startIcon={<DeleteIcon />}
-          variant="contained"
-          color="secondary">
-          Delete
-        </Button>
         <Button
           startIcon={<EditIcon />}
           variant="contained"
           color="primary">
           Edit
+        </Button>
+        <Button
+          startIcon={<DeleteIcon />}
+          variant="contained"
+          color="secondary">
+          Delete
         </Button>
       </CardActions>
     </Card>
