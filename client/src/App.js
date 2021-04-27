@@ -1,13 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
+import Container from '@material-ui/core/Container'
 import AppHeader from './components/AppHeader';
-import { Container } from '@material-ui/core'
+import BlogPosts from './components/BlogPosts';
 
 function App() {
   return (
     <div className="App">
       <Container maxWidth="md">
         <AppHeader text="Awesome Blog App" />
+        <BlogPosts />
       </Container>
     </div>
   );
