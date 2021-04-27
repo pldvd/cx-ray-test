@@ -6,7 +6,7 @@ const initialState = {
   error: null
 };
 
-export const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case Types.REQUEST_START:
       return {
@@ -29,35 +29,35 @@ export const reducer = (state = initialState, action) => {
 
     case Types.UPDATE_POST_SUCCESS:
       const updated = action.post;
-      const posts = state.posts
-        .filter(post => post._id !== updated._id)
-        .concat(updated);
+
 
       return {
         ...initialState,
-        posts
+        posts: state.posts
+          .filter(post => post._id !== updated._id)
+          .concat(updated)
       };
 
     case Types.REMOVE_POST_SUCCESS:
       const removed = action.post;
-      const posts = state.posts
-        .filter(post => post._id !== removed._id);
 
       return {
         ...initialState,
-        posts
+        posts: state.posts
+          .filter(post => post._id !== removed._id)
       };
 
     case Types.ADD_POST_SUCCESS:
       const added = action.post;
-      const posts = state.posts.concat(added);
 
       return {
         ...initialState,
-        posts
+        posts: state.posts.concat(added)
       };
-      
+
     default:
       return state;
   }
 }
+
+export default reducer;
