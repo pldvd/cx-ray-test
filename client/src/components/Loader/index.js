@@ -9,7 +9,7 @@ function Loader() {
   https://github.com/mui-org/material-ui/blob/master/packages/material-ui/src/styles/zIndex.js
   */
   return (
-    <Backdrop open style={{ zIndex: 2000 }}>
+    <Backdrop open style={{ zIndex: 2000 }} invisible="true">
       <CircularProgress color="primary" />
     </Backdrop>
   )
