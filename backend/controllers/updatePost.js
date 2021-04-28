@@ -21,7 +21,7 @@ async function updatePost(req, res, next) {
    findByIdAndUpdate returns the original document by default, so we need to add a third param: {new: true} to get the updated document
   */
 
-  const updated = await BlogPost.findByIdAndUpdate(id, post, { new: true });
+  const updated = await BlogPost.findByIdAndUpdate(id, post, { new: true, runValidators: true });
 
   res.json(updated);
 }

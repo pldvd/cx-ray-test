@@ -4,11 +4,13 @@ const { Schema } = mongoose;
 const BlogPostSchema = new Schema({
   title: {
     type: String,
-    required: 'Post title is required.'
+    required: 'Post title is required.',
+    validate: /\S+/
   },
   text: {
     type: String,
-    required: 'Post text is required.'
+    required: 'Post text is required.',
+    validate: /\S+/
   }
 }, {
   toJSON: {
