@@ -8,6 +8,7 @@ import TitleInput from './TitleInput';
 import SaveIcon from '@material-ui/icons/Save';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import * as Yup from 'yup';
 
 const useStyles = makeStyles({
   container: {
@@ -49,6 +50,10 @@ function EditorModal({ isOpen, handleClose, title, text, isEditing }) {
             title: title || '',
             text: text || ''
           }}
+          validationSchema={Yup.object({
+            title: Yup.string().required('Title is required.'),
+            text: Yup.string().required('Text is required.')
+          })}
           onSubmit={handleSubmit}
         >
           <Form className={classes.form}>
