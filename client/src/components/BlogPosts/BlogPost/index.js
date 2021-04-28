@@ -4,7 +4,6 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import SaveIcon from '@material-ui/icons/Save';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { deletePost } from '../../../redux/actions';
@@ -34,6 +33,7 @@ function BlogPost({ title, text, id }) {
         handleClose={closeModal}
         title={title}
         text={text}
+        isEditing={true}
       />
       <CardContent>
         <Typography variant="h6">{title}</Typography>
