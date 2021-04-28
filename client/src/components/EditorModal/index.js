@@ -30,7 +30,7 @@ const useStyles = makeStyles({
   }
 });
 
-function EditorModal({ isOpen, handleClose, title, text, isEditing, id }) {
+function EditorModal({ isOpen, handleClose, title = '', text = '', isEditing, id = '' }) {
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -54,8 +54,8 @@ function EditorModal({ isOpen, handleClose, title, text, isEditing, id }) {
       <Box className={classes.card} maxWidth={600}>
         <Formik
           initialValues={{
-            title: title || '',
-            text: text || ''
+            title: title,
+            text: text
           }}
           validationSchema={Yup.object({
             title: Yup.string().required('Title is required.'),
