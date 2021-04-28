@@ -7,7 +7,6 @@ import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import responsiveFontSizes from '@material-ui/core/styles/responsiveFontSizes';
 import Loader from './components/Loader';
 import { useSelector } from 'react-redux';
-import AddPost from './components/AddPost';
 
 let theme = createMuiTheme();
 theme = responsiveFontSizes(theme);
@@ -21,7 +20,6 @@ function App() {
         {isLoading ? <Loader /> : null}
         <Container maxWidth="md">
           <AppHeader text="Awesome Blog App" />
-          <AddPost />
           <BlogPosts />
         </Container>
       </MuiThemeProvider>
