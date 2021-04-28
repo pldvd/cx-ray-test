@@ -29,13 +29,16 @@ const reducer = (state = initialState, action) => {
 
     case Types.UPDATE_POST_SUCCESS:
       const updated = action.post;
-
-
+      
       return {
         ...initialState,
         posts: state.posts
-          .filter(post => post._id !== updated._id)
-          .concat(updated)
+          .map(post => {
+            if (post._id === updated._id) {
+              return updated;
+            }
+            return post;
+          })
       };
 
     case Types.REMOVE_POST_SUCCESS:
