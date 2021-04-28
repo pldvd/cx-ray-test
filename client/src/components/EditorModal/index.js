@@ -58,8 +58,12 @@ function EditorModal({ isOpen, handleClose, title = '', text = '', isEditing, id
             text: text
           }}
           validationSchema={Yup.object({
-            title: Yup.string().required('Title is required.'),
-            text: Yup.string().required('Text is required.')
+            title: Yup.string()
+              .required('Title is required.')
+              .test('empty-check', 'Title cannot be empty string.', value => /\S+/.test(value)),
+            text: Yup.string()
+              .required('Text is required.')
+              .test('empty-check', 'Text cannot be empty string.', value => /\S+/.test(value))
           })}
           onSubmit={handleSubmit}
         >
