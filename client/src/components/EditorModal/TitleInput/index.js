@@ -8,13 +8,19 @@ const useStyles = makeStyles({
   }
 });
 
-function TitleInput() {
+/*
+Field and form props are provided by Formik's Field component: https://formik.org/docs/api/field
+*/
+
+function TitleInput({ field, form }) {
   const classes = useStyles();
 
   return <TextField
     label="Title"
     variant="standard"
     className={classes.input}
+    value={field.value}
+    onChange={e => form.setFieldValue(field.name, e.target.value)}
   />;
 }
 
