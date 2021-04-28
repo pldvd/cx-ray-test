@@ -34,6 +34,7 @@ function BlogPost({ title, text, id }) {
         title={title}
         text={text}
         isEditing={true}
+        id={id}
       />
       <CardContent>
         <Typography variant="h6">{title}</Typography>

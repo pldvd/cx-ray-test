@@ -19,10 +19,10 @@ export const fetchPosts = () => dispatch => {
     })
 };
 
-export const updatePost = id => dispatch => {
+export const updatePost = (id, title, text) => dispatch => {
   dispatch({ type: Types.REQUEST_START });
 
-  axios.put(`/update-post/${id}`)
+  axios.put(`/update-post/${id}`, { title, text })
     .then(res => {
       dispatch({
         type: Types.UPDATE_POST_SUCCESS,
@@ -55,10 +55,10 @@ export const deletePost = id => dispatch => {
     })
 };
 
-export const addPost = () => dispatch => {
+export const addPost = (title, text) => dispatch => {
   dispatch({ type: Types.REQUEST_START });
 
-  axios.delete('/add-post')
+  axios.post('/add-post', {title, text})
     .then(res => {
       dispatch({
         type: Types.ADD_POST_SUCCESS,

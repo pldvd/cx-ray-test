@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Formik, Field, Form } from 'formik';
 import Modal from '@material-ui/core/Modal';
 import { makeStyles } from '@material-ui/core/styles';
@@ -8,6 +9,7 @@ import SaveIcon from '@material-ui/icons/Save';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import * as Yup from 'yup';
+import { updatePost, addPost } from '../../redux/actions';
 
 const useStyles = makeStyles({
   container: {
@@ -28,12 +30,17 @@ const useStyles = makeStyles({
   }
 });
 
-function EditorModal({ isOpen, handleClose, title, text, isEditing }) {
+function EditorModal({ isOpen, handleClose, title, text, isEditing, id }) {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
-  const handleSubmit = () => {
-    console.log('Hellow world!');
-  }
+  const handleSubmit = values => {
+    const { title, text } = values;
+
+    isEditing
+      ? dispatch(updatePost(id, title, text))
+      : dispatch(addPost(title, text))
+  };
 
   return (
     <Modal
@@ -65,11 +72,11 @@ function EditorModal({ isOpen, handleClose, title, text, isEditing }) {
               label="Title"
               variant="standard"
             />
-            <Field 
-            name="text" 
-            component={TextInput} 
-            label="Text"
-            variant="outlined"
+            <Field
+              name="text"
+              component={TextInput}
+              label="Text"
+              variant="outlined"
             />
             <Button
               type="submit"
