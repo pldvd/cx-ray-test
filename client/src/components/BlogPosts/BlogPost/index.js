@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -11,10 +11,19 @@ import { deletePost } from '../../../redux/actions';
 import { useDispatch } from 'react-redux';
 
 function BlogPost({ title, text, id }) {
+  const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
 
   const handleDelete = () => {
     dispatch(deletePost(id));
+  };
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
   };
 
   return (
@@ -25,6 +34,7 @@ function BlogPost({ title, text, id }) {
       </CardContent>
       <CardActions>
         <Button
+          onclick={openModal}
           startIcon={<EditIcon />}
           variant="contained"
           color="primary">
