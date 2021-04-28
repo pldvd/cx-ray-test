@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import BlogPost from './BlogPost';
 import Box from '@material-ui/core/Box';
 import { fetchPosts } from '../../redux/actions';
+import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles({
   root: {
@@ -24,13 +25,17 @@ function BlogPosts() {
 
   return (
     <Box className={classes.root}>
-      {posts.map(post => (
-        <BlogPost
-          key={post._id}
-          id={post._id}
-          title={post.title}
-          text={post.text} />
-      ))}
+      {
+        posts.length === 0
+          ? <Typography variant="body1">To add posts, please click on the plus icon next to the header ☝️</Typography>
+          : posts.map(post => (
+            <BlogPost
+              key={post._id}
+              id={post._id}
+              title={post.title}
+              text={post.text} />
+          ))
+      }
     </Box>
   )
 }
