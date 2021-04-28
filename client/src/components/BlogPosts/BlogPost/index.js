@@ -9,6 +9,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { deletePost } from '../../../redux/actions';
 import { useDispatch } from 'react-redux';
+import EditorModal from '../../EditorModal';
 
 function BlogPost({ title, text, id }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,23 +29,31 @@ function BlogPost({ title, text, id }) {
 
   return (
     <Card>
+      <EditorModal
+        isOpen={isOpen}
+        handleClose={closeModal}
+        title={title}
+        text={text}
+      />
       <CardContent>
         <Typography variant="h6">{title}</Typography>
         <Typography variant="body1">{text}</Typography>
       </CardContent>
       <CardActions>
         <Button
-          onclick={openModal}
+          onClick={openModal}
           startIcon={<EditIcon />}
           variant="contained"
-          color="primary">
+          color="primary"
+        >
           Edit
         </Button>
         <Button
           onClick={handleDelete}
           startIcon={<DeleteIcon />}
           variant="contained"
-          color="secondary">
+          color="secondary"
+        >
           Delete
         </Button>
       </CardActions>
