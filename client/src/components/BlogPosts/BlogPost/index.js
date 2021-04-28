@@ -21,7 +21,7 @@ function BlogPost({ title, text, id }) {
   const openModal = () => {
     setIsOpen(true);
   };
-
+  
   const closeModal = () => {
     setIsOpen(false);
   };

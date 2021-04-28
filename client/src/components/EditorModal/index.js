@@ -36,10 +36,11 @@ function EditorModal({ isOpen, handleClose, title, text, isEditing, id }) {
 
   const handleSubmit = values => {
     const { title, text } = values;
+    handleClose();
 
     isEditing
       ? dispatch(updatePost(id, title, text))
-      : dispatch(addPost(title, text))
+      : dispatch(addPost(title, text));
   };
 
   return (
