@@ -3,7 +3,8 @@ import * as Types from './types';
 const initialState = {
   posts: [],
   isLoading: false,
-  error: null
+  isToastOpen: false,
+  toastMessage: ''
 };
 
 const reducer = (state = initialState, action) => {
@@ -18,7 +19,8 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        error: action.error
+        isToastOpen: true,
+        toastMessage: 'An error occured and the request failed.'
       };
 
     case Types.FETCH_POSTS_SUCCESS:
@@ -29,9 +31,11 @@ const reducer = (state = initialState, action) => {
 
     case Types.UPDATE_POST_SUCCESS:
       const updated = action.post;
-      
+
       return {
         ...initialState,
+        isToastOpen: true,
+        toastMessage: 'Post successfully updated.',
         posts: state.posts
           .map(post => {
             if (post._id === updated._id) {
@@ -46,6 +50,8 @@ const reducer = (state = initialState, action) => {
 
       return {
         ...initialState,
+        isToastOpen: true,
+        toastMessage: 'Post successfully deleted.',
         posts: state.posts
           .filter(post => post._id !== removed._id)
       };
@@ -55,7 +61,16 @@ const reducer = (state = initialState, action) => {
 
       return {
         ...initialState,
+        isToastOpen: true,
+        toastMessage: 'Post successfully added.',
         posts: state.posts.concat(added)
+      };
+
+    case Types.CLOSE_TOAST_MESSAGE:
+      return {
+        ...state,
+        isToastOpen: false,
+        toastMessage: '',
       };
 
     default:

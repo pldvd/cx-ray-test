@@ -58,7 +58,7 @@ export const deletePost = id => dispatch => {
 export const addPost = (title, text) => dispatch => {
   dispatch({ type: Types.REQUEST_START });
 
-  axios.post('/add-post', {title, text})
+  axios.post('/add-post', { title, text })
     .then(res => {
       dispatch({
         type: Types.ADD_POST_SUCCESS,
@@ -72,3 +72,7 @@ export const addPost = (title, text) => dispatch => {
       })
     })
 };
+
+export const closeToastMessage = () => {
+  return { type: Types.CLOSE_TOAST_MESSAGE };
+}
