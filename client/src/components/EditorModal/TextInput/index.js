@@ -15,9 +15,9 @@ const useStyles = makeStyles({
 Field and form props are provided by Formik's Field component: https://formik.org/docs/api/field
 */
 
-function TextInput({ field, form }) {
+function TextInput({ field, form, label, variant }) {
   const classes = useStyles();
-  
+
   const handleChange = e => {
     form.setFieldTouched(field.name, true);
     form.setFieldValue(field.name, e.target.value);
@@ -26,8 +26,8 @@ function TextInput({ field, form }) {
   return (
     <Box>
       <TextField
-        label="Text"
-        variant="outlined"
+        label={label}
+        variant={variant}
         className={classes.input}
         value={field.value}
         onChange={handleChange}
