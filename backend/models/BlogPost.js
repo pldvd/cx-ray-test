@@ -9,10 +9,6 @@ const BlogPostSchema = new Schema({
   text: {
     type: String,
     required: 'Post text is required.'
-  },
-  likes: {
-    type: Number,
-    default: 0
   }
 }, {
   toJSON: {
